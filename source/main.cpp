@@ -7,10 +7,8 @@ int main() {
     ChaosGame chaosGame;
     chaosGame.nextIteration();
 
-    std::vector<Point> points = chaosGame.getPoints();
-
-    for (Point point : points) {
-        std::cout << "Point x: " << point.x << " - y: " << point.y << std::endl;
+    for (auto [x, y] : chaosGame.getPoints()) {
+        std::cout << "Point x: " << x << " - y: " << y << std::endl;
     }
 
     return 0;
