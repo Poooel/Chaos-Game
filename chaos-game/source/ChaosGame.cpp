@@ -1,15 +1,17 @@
 #include "ChaosGame.h"
 
-ChaosGame::ChaosGame(int width, int height): _randomNumberGenerator(_randomDevice()), _uniformDistribution(_lowerBound, _upperBound) {
+ChaosGame::ChaosGame(int width, int height)
+    : _randomNumberGenerator(_randomDevice()),
+      _uniformDistribution(_lowerBound, _upperBound) {
     //   b
     //  / \
     // a---c
-    int tenthWidth = width / 10;
+    int tenthWidth  = width / 10;
     int tenthHeight = height / 10;
 
-    Point a = {tenthWidth, 9 * tenthHeight};
-    Point b = {5 * tenthWidth, tenthHeight};
-    Point c = {9 * tenthWidth, 9 * tenthHeight};
+    Point a = { tenthWidth, 9 * tenthHeight };
+    Point b = { 5 * tenthWidth, tenthHeight };
+    Point c = { 9 * tenthWidth, 9 * tenthHeight };
 
     _startingPoints.push_back(a);
     _startingPoints.push_back(b);
@@ -32,9 +34,9 @@ ChaosGame::ChaosGame(int width, int height): _randomNumberGenerator(_randomDevic
 
 void ChaosGame::nextIteration() {
     Point currentPoint = _points.back();
-    int rolledDice = getRandomNumber();
-    Point towardsTo = _diceToPoints[rolledDice];
-    Point midPoint = getMidPoint(currentPoint, towardsTo);
+    int   rolledDice   = getRandomNumber();
+    Point towardsTo    = _diceToPoints[rolledDice];
+    Point midPoint     = getMidPoint(currentPoint, towardsTo);
     _points.push_back(midPoint);
 }
 
@@ -49,5 +51,5 @@ int ChaosGame::getRandomNumber() {
 Point ChaosGame::getMidPoint(const Point& a, const Point& b) {
     const int midPointX = (a.x + b.x) / 2;
     const int midPointY = (a.y + b.y) / 2;
-    return {midPointX, midPointY};
+    return { midPointX, midPointY };
 }
