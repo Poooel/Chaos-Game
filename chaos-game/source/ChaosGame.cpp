@@ -1,12 +1,15 @@
 #include "ChaosGame.h"
 
-ChaosGame::ChaosGame(): _randomNumberGenerator(_randomDevice()), _uniformDistribution(_lowerBound, _upperBound) {
+ChaosGame::ChaosGame(int width, int height): _randomNumberGenerator(_randomDevice()), _uniformDistribution(_lowerBound, _upperBound) {
     //   b
     //  / \
     // a---c
-    Point a = {0, 0};
-    Point b = {500, 1000};
-    Point c = {1000, 0};
+    int tenthWidth = width / 10;
+    int tenthHeight = height / 10;
+
+    Point a = {tenthWidth, 9 * tenthHeight};
+    Point b = {5 * tenthWidth, tenthHeight};
+    Point c = {9 * tenthWidth, 9 * tenthHeight};
 
     _startingPoints.push_back(a);
     _startingPoints.push_back(b);
@@ -35,7 +38,7 @@ void ChaosGame::nextIteration() {
     _points.push_back(midPoint);
 }
 
-std::vector<Point> ChaosGame::getPoints() {
+const std::vector<Point>& ChaosGame::getPoints() {
     return _points;
 }
 

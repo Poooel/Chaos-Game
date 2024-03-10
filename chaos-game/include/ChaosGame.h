@@ -8,12 +8,12 @@
 
 class ChaosGame {
 public:
-    ChaosGame();
+    ChaosGame(int width, int height);
     ~ChaosGame() = default;
 
     void nextIteration();
 
-    std::vector<Point> getPoints();
+    const std::vector<Point>& getPoints();
 
 private:
     int getRandomNumber();
